@@ -1,0 +1,21 @@
+language: php
+
+php:
+  - 7.0
+  - nightly
+
+sudo: false
+
+matrix:
+  allow_failures:
+    - php: nightly
+
+before_install:
+  - composer self-update
+
+install:
+  - composer install --prefer-dist --no-interaction
+
+after_success:
+  - curl -LSs https://box-project.github.io/box2/installer.php | php
+  - php box.phar build

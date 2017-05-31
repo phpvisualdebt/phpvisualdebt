@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php declare(strict_types = 1);
+
+for ($dir = '/..'; $dir !== '/../../../..'; $dir .= '/..') {
+    if (\file_exists($file = __DIR__ . "{$dir}/vendor/autoload.php")) {
+        require_once $file;
+        break;
+    }
+}
+
+$app = new \Symfony\Component\Console\Application('phpvisualdebt');
+$app->add(new \PHPVisualDebt\Command\CheckCommand());
+$app->setDefaultCommand('check');
+$app->setAutoExit(true);
+$app->run();

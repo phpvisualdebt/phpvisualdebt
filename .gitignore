@@ -1,0 +1,6 @@
+bin/*
+!bin/phpvisualdebt
+vendor
+box.phar
+phpvisualdebt.phar
+composer.lock

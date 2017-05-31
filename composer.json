@@ -1,0 +1,30 @@
+{
+    "name": "phpvisualdebt/phpvisualdebt",
+    "description": "Static Analyzer which Question Everything what is leaving Visual Debt behind Edit Add topics",
+    "license": "MIT",
+    "author": {
+        "name": "brzuchal",
+        "email": "michal.brzuchalski@gmail.com"
+    },
+    "require": {
+        "php": "7.*",
+        "symfony/console": "^3.3",
+        "nikic/php-parser": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPVisualDebt\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPVisualDebt\\Test\\": "test/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.3"
+    }
+}
