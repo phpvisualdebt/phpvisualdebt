@@ -17,7 +17,10 @@ This tool provide static analysis for source code following best QDD practices.
 
 * interface questioner - asks a question for justification of single interface usage
 * `final` keyword - asks a question for need of a keyword
+* scalar typehints and requrn types questioner - asks a question if one of typehints before PHP7 was used
 
+
+![Screenshoot](screenshoot.png)
 
 ## Installation
 
