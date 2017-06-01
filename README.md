@@ -1,8 +1,8 @@
 # ![PHPVisualDebt](question-48.png) PHPVisualDebt
-Static Analyzer following QDD which
-Question Everything what is leaving Visual Debt behind.
 
-Feel free to interpret QDD as you want! It could be Question Driven Development same as Question Disaster Development!
+Static Analyzer following QDD which Questions Everything that is leaving Visual Debt behind.
+
+Feel free to interpret QDD however you want! It could be Question Driven Development as well as Question Disaster Development!
 
 ![PHP 7.0](https://img.shields.io/badge/PHP-7.0-8C9CB6.svg?style=flat)
 [![Build Status](https://travis-ci.org/phpvisualdebt/phpvisualdebt.svg?branch=master)](https://travis-ci.org/phpvisualdebt/phpvisualdebt)
@@ -15,11 +15,11 @@ Feel free to interpret QDD as you want! It could be Question Driven Development 
 
 ## Features
 
-This tool provide static analysis for source code following best QDD practices.
+This tool provides static analysis for source code following best QDD practices.
 
 * interface questioner - asks a question for justification of single interface usage
 * `final` keyword - asks a question for need of a keyword
-* scalar typehints and requrn types questioner - asks a question if one of typehints before PHP7 was used
+* scalar typehints and return types questioner - asks a question if one of type declarations before PHP7 was used
 
 ## Installation
 
@@ -40,8 +40,9 @@ bin/phpvisualdebt
 
 ![Screenshoot for Question Everything](screenshot-everything.png)
 
-For those who are not sure to question everything, there is an additional option `--question` which default value is `everything`.
-Possible values are comma separated list of: `final`, `interface` or/and `typehint`.
+For those who are not sure to question everything, there is an additional option `--question` which defaults to `everything`.
+Possible values are a comma separated list of: `final`, `interface` or/and `typehint`.
+
 ```bash
 bin/phpvisualdebt --question=final,interface
 ```
