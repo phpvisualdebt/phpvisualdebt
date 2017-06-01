@@ -21,9 +21,6 @@ This tool provide static analysis for source code following best QDD practices.
 * `final` keyword - asks a question for need of a keyword
 * scalar typehints and requrn types questioner - asks a question if one of typehints before PHP7 was used
 
-
-![Screenshoot](screenshoot.png)
-
 ## Installation
 
 Install with Composer
@@ -32,6 +29,8 @@ Install with Composer
 composer require phpvisualdebt/phpvisualdebt
 ```
 
+Or download `phpvisualdebt.phar` from last [release](https://github.com/phpvisualdebt/phpvisualdebt/releases).
+
 ## Usage
 
 Analyzing code:
@@ -39,11 +38,15 @@ Analyzing code:
 bin/phpvisualdebt
 ```
 
+![Screenshoot for Question Everything](screenshot-everything.png)
+
 For those who are not sure to question everything, there is an additional option `--question` which default value is `everything`.
 Possible values are comma separated list of: `final`, `interface` or/and `typehint`.
 ```bash
 bin/phpvisualdebt --question=final,interface
 ```
+
+![Screenshoot for Question Almost-Everything](screenshot-question-final-interface.png)
 
 ## License
 
