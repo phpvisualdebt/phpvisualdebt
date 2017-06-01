@@ -63,6 +63,15 @@ class MethodTypeHintAndReturnTypeQuestioner extends AbstractQuestioner implement
             /** @var Node\Stmt\ClassMethod[] $methods */
             foreach ($methods as $index => $classMethod) {
                 foreach ($classMethod->getParams() as $param) {
+                    if ($param->type instanceof Node\NullableType) {
+                        $type = is_string($param->type->type) ? $param->type->type : $param->type->type->toString();
+                        $questions[] = new Question(
+                            "Rly? Nullable typehint <keyword>{$type}</keyword> in <name>{$type}::{$classMethod->name}</name>",
+                            self::VISUAL_DEBT,
+                            $classMethod->getLine()
+                        );
+                        continue;
+                    }
                     if ($param->type !== 'array' && !($param->type instanceof Node\Name\FullyQualified)) {
                         $questions[] = new Question(
                             "Do you mind removing a <keyword>{$param->type}</keyword> typehint in <name>{$type}::{$classMethod->name}</name>",
@@ -80,7 +89,7 @@ class MethodTypeHintAndReturnTypeQuestioner extends AbstractQuestioner implement
                     if ($typeName instanceof Node\NullableType) {
                         $type = is_string($typeName->type) ? $typeName->type : $typeName->type->toString();
                         $questions[] = new Question(
-                            "Rly? Nullable return type <keyword>{$typeName->type->toString()}</keyword> in <name>{$type}::{$classMethod->name}</name>",
+                            "Rly? Nullable return type <keyword>{$type}</keyword> in <name>{$type}::{$classMethod->name}</name>",
                             self::VISUAL_DEBT,
                             $classMethod->getLine()
                         );
