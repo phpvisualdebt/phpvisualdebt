@@ -11,6 +11,8 @@ class FinalKeywordQuestioner extends AbstractQuestioner implements NodeVisitor
 
     /** @var Node\Stmt\Class_[]|Node\Stmt\Trait_[] */
     private $finals = [];
+    /** @var int */
+    private $sentenceCount = 0;
 
     public function beforeTraverse(array $nodes)
     {
@@ -55,12 +57,31 @@ class FinalKeywordQuestioner extends AbstractQuestioner implements NodeVisitor
             }
             /** @var Node\Name $name */
             $name = $final->namespacedName;
-            $questions[] = new Question(
-                "Come on! I'm not your daddy! " .
-                "Do you really need a <keyword>final</keyword> keyword in {$type} <name>{$name}</name>",
-                self::VISUAL_DEBT,
-                $final->getLine()
-            );
+            switch ($this->sentenceCount++ % 3) {
+                case 1:
+                    $questions[] = new Question(
+                        "Really? A <keyword>final</keyword> keyword in {$type} <name>{$name}</name> " .
+                        "Ohhhhh... come on! I'm not your daddy!",
+                        self::VISUAL_DEBT,
+                        $final->getLine()
+                    );
+                    break;
+                case 2:
+                    $questions[] = new Question(
+                        "Again? A <keyword>final</keyword> keyword in {$type} <name>{$name}</name> " .
+                        'WTF?!',
+                        self::VISUAL_DEBT,
+                        $final->getLine()
+                    );
+                    break;
+                default:
+                    $questions[] = new Question(
+                        "Do you really need a <keyword>final</keyword> keyword in {$type} <name>{$name}</name>",
+                        self::VISUAL_DEBT,
+                        $final->getLine()
+                    );
+                    break;
+            }
         }
         $this->finals = [];
 

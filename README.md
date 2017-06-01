@@ -1,6 +1,8 @@
 # PHPVisualDebt
-Static Analyzer following QDD (Question Driven Development) which
+Static Analyzer following QDD which
 Question Everything what is leaving Visual Debt behind.
+
+Feel free to interpret QDD as you want! It could be Question Driven Development same as Question Disaster Development!
 
 ![PHP 7.0](https://img.shields.io/badge/PHP-7.0-8C9CB6.svg?style=flat)
 [![Build Status](https://travis-ci.org/phpvisualdebt/phpvisualdebt.svg?branch=master)](https://travis-ci.org/phpvisualdebt/phpvisualdebt)
@@ -34,7 +36,13 @@ composer require phpvisualdebt/phpvisualdebt
 
 Analyzing code:
 ```bash
-bin/phpvisualdebt src/
+bin/phpvisualdebt
+```
+
+For those who are not sure to question everything, there is an additional option `--question` which default value is `everything`.
+Possible values are comma separated list of: `final`, `interface` or/and `typehint`.
+```bash
+bin/phpvisualdebt --question=final,interface
 ```
 
 ## License

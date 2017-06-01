@@ -11,6 +11,8 @@ class MethodTypeHintAndReturnTypeQuestioner extends AbstractQuestioner implement
 
     /** @var Node\Stmt\Class_[]|Node\Stmt\Trait_[] */
     private $declarations = [];
+    /** @var int */
+    private $sentenceCount = 0;
 
     public function beforeTraverse(array $nodes)
     {
@@ -75,14 +77,32 @@ class MethodTypeHintAndReturnTypeQuestioner extends AbstractQuestioner implement
                     $classMethod->getReturnType() !== 'array' &&
                     !($classMethod->getReturnType() instanceof Node\Name\FullyQualified)
                 ) {
-                    $questions[] = new Question(
-                        "What were you thinking? Return type <keyword>{$classMethod->getReturnType()}</keyword> isn't needed in <name>{$type}::{$classMethod->name}</name>",
-                        self::VISUAL_DEBT,
-                        $classMethod->getLine()
-                    );
+                    switch ($this->sentenceCount++ % 3) {
+                        case 1:
+                            $questions[] = new Question(
+                                "Why? Return type <keyword>{$classMethod->getReturnType()}</keyword> again in <name>{$type}::{$classMethod->name}</name>",
+                                self::VISUAL_DEBT,
+                                $classMethod->getLine()
+                            );
+                            break;
+                        case 2:
+                            $questions[] = new Question(
+                                "Why again? Return type <keyword>{$classMethod->getReturnType()}</keyword> is for dummies in <name>{$type}::{$classMethod->name}</name>",
+                                self::VISUAL_DEBT,
+                                $classMethod->getLine()
+                            );
+                            break;
+                        default:
+                            $questions[] = new Question(
+                                "Gonna remove return type <keyword>{$classMethod->getReturnType()}</keyword> right? in <name>{$type}::{$classMethod->name}</name>",
+                                self::VISUAL_DEBT,
+                                $classMethod->getLine()
+                            );
+                    }
                 }
             }
         }
+        $this->declarations = [];
 
         return [
             new FileQuestions($this->fileInfo, $questions),

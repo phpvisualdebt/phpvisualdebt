@@ -75,8 +75,7 @@ class InterfaceQuestioner extends AbstractQuestioner implements NodeVisitor
                         $this->fileClasses[$name->toString()],
                         [
                             new Question(
-                                'What is the justification for one time usage of ' .
-                                "interface <name>{$implement}</name> in class <name>{$name}</name>",
+                                "Is there any justification for interface <name>{$implement}</name> usage?",
                                 self::VISUAL_DEBT,
                                 $implement->getLine()
                             ),

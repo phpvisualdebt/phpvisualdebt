@@ -10,6 +10,6 @@ for ($dir = '/..'; $dir !== '/../../../..'; $dir .= '/..') {
 
 $app = new \Symfony\Component\Console\Application('phpvisualdebt');
 $app->add(new \PHPVisualDebt\Command\CheckCommand());
-$app->setDefaultCommand('check');
+$app->setDefaultCommand('check', true);
 $app->setAutoExit(true);
 $app->run();

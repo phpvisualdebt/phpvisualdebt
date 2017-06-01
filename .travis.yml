@@ -1,21 +1,22 @@
 language: php
-
 php:
   - 7.0
   - nightly
-
 sudo: false
-
 matrix:
   allow_failures:
-    - php: nightly
-
+  - php: nightly
 before_install:
   - composer self-update
-
 install:
   - composer install --prefer-dist --no-interaction
-
 after_success:
   - curl -LSs https://box-project.github.io/box2/installer.php | php
   - php box.phar build
+deploy:
+  provider: releases
+  api_key:
+    secure: MDxSXNdHDQxbSlJYVUv1GdWf5btnJTpziY/Tsv1hEyoLkJhFxgzPo2GUtUWEIvhLEBTZNa63NBi06sExGkUT9UK5BcfblR3E1kZUrgiRc1BfGOINDawLoVf8s+hResU+dDkfJKjSdDhUCfVoZ1NScp+bOgN8egSyhy2gBySjTNd1SfPrJ4A/5Bd4pODu7sYilZglE6ivx9Q4+g5resO3wCKxvftiapWciHmew3ACcO+4Mde67LWTf95jUmtJq0sEwL6yOu6MuAerTmt5C68txtOP2ycMq3aA26zFNgMhhslhhGwp9p59/xpemoHlAfhLtlxmiecVLBpwS0EIbTkA7oXM5ZWlZfjaqmZotLJzLg5eZrhenPf4URMbH/Sgd4pA0VNadnmpUaK33xF3XCt3iK3GUj/xKtO6iKF664auIE3BzlRqHmUcJ4JHDOMLlDUaPb7+slDI4XcOO+DOpq+UGj78KP8DGL373m6u5HJKy6hwQ2fGbtkyTQ2van/LBBelxHiPCLkZIwzQwInoSXJTzcFnCe7naSKbu4pcIPVTI6oOnJ2ymE+RmBy6tWXj+ipklr73VCUeSUM1w78OixqFc1cvRM8rWxdiyDr0HyZzZu+WLf6o8PyogGPKKvQdezYctqCXeypyuaQQK6ukhlF/mHIS5rv2Guv0AATueCvawkA=
+  file: phpvisualdebt.phar
+  on:
+    repo: phpvisualdebt/phpvisualdebt
