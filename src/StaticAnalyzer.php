@@ -36,7 +36,7 @@ final class StaticAnalyzer
         $this->questioners[\get_class($questioner)] = $questioner;
     }
 
-    public function analyze(string $directory) : array
+    public function analyze($directory) : array
     {
         $filesQuestions = [];
         /** @var \SplFileInfo[] $files */

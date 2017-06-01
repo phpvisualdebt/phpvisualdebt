@@ -63,6 +63,9 @@ class MethodTypeHintAndReturnTypeQuestioner extends AbstractQuestioner implement
             /** @var Node\Stmt\ClassMethod[] $methods */
             foreach ($methods as $index => $classMethod) {
                 foreach ($classMethod->getParams() as $param) {
+                    if (\is_null($param->type)) {
+                        continue;
+                    }
                     if ($param->type instanceof Node\NullableType) {
                         $type = is_string($param->type->type) ? $param->type->type : $param->type->type->toString();
                         $questions[] = new Question(
@@ -86,6 +89,9 @@ class MethodTypeHintAndReturnTypeQuestioner extends AbstractQuestioner implement
                     !($classMethod->getReturnType() instanceof Node\Name\FullyQualified)
                 ) {
                     $typeName = $classMethod->getReturnType();
+                    if (\is_null($typeName)) {
+                        continue;
+                    }
                     if ($typeName instanceof Node\NullableType) {
                         $type = is_string($typeName->type) ? $typeName->type : $typeName->type->toString();
                         $questions[] = new Question(
