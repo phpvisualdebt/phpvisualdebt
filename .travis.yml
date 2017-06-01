@@ -13,6 +13,7 @@ install:
 after_success:
   - curl -LSs https://box-project.github.io/box2/installer.php | php
   - php box.phar build
+  - ls -lah
 deploy:
   provider: releases
   api_key:
