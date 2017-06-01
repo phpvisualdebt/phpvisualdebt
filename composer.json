@@ -24,6 +24,7 @@
     "config": {
         "bin-dir": "bin/"
     },
+    "bin": ["bin/phpvisualdebt"],
     "require-dev": {
         "symfony/var-dumper": "^3.3"
     }
