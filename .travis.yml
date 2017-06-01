@@ -22,3 +22,4 @@ deploy:
   file: phpvisualdebt.phar
   on:
     repo: phpvisualdebt/phpvisualdebt
+    tags: true
