@@ -2,10 +2,12 @@
     "name": "phpvisualdebt/phpvisualdebt",
     "description": "Static Analyzer which Question Everything what is leaving Visual Debt behind Edit Add topics",
     "license": "MIT",
-    "author": {
-        "name": "brzuchal",
-        "email": "michal.brzuchalski@gmail.com"
-    },
+    "authors": [
+        {
+            "name": "brzuchal",
+            "email": "michal.brzuchalski@gmail.com"
+        }
+    ],
     "require": {
         "php": "7.*",
         "symfony/console": "3.*",
@@ -24,8 +26,5 @@
     "config": {
         "bin-dir": "bin/"
     },
-    "bin": ["bin/phpvisualdebt"],
-    "require-dev": {
-        "symfony/var-dumper": "^3.3"
-    }
+    "bin": ["bin/phpvisualdebt"]
 }
