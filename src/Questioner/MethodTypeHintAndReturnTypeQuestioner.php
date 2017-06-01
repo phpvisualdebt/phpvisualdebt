@@ -78,6 +78,7 @@ class MethodTypeHintAndReturnTypeQuestioner extends AbstractQuestioner implement
                 ) {
                     $typeName = $classMethod->getReturnType();
                     if ($typeName instanceof Node\NullableType) {
+                        $type = is_string($typeName->type) ? $typeName->type : $typeName->type->toString();
                         $questions[] = new Question(
                             "Rly? Nullable return type <keyword>{$typeName->type->toString()}</keyword> in <name>{$type}::{$classMethod->name}</name>",
                             self::VISUAL_DEBT,
