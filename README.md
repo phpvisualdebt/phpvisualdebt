@@ -1,4 +1,4 @@
-# PHPVisualDebt
+# ![PHPVisualDebt](question-48.png) PHPVisualDebt
 Static Analyzer following QDD which
 Question Everything what is leaving Visual Debt behind.
 
